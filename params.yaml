@@ -2,10 +2,10 @@ prepare:
   age_threshold: 70
 
 process:
-  test_size: 0.25
-  seed: 32
+  test_size: 0.2
+  seed: 10
 
 
 train:
-  n_estimators: 450
-  max_depth: 19
+  n_estimators: 550
+  max_depth: 40
