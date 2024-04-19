@@ -1,0 +1,105 @@
+schema: '2.0'
+stages:
+  preparetion:
+    cmd: python data_prep.py
+    deps:
+    - path: data_prep.py
+      hash: md5
+      md5: 6161dd993cd3455921c1fe455da3af8e
+      size: 782
+    - path: dataset.csv
+      hash: md5
+      md5: 7321aa9a1e24a9e139f42124f736b415
+      size: 674857
+    params:
+      params.yaml:
+        prepare.age_threshold: 70
+    outs:
+    - path: outs/prepared_df.csv
+      hash: md5
+      md5: 883886ae55d2deb5b1128a5bc40eea4d
+      size: 478635
+  process:
+    cmd: python data_process.py
+    deps:
+    - path: data_process.py
+      hash: md5
+      md5: a266e7ede62510c90552cdb7be26b6ae
+      size: 3284
+    - path: outs/prepared_df.csv
+      hash: md5
+      md5: 883886ae55d2deb5b1128a5bc40eea4d
+      size: 478635
+    params:
+      params.yaml:
+        process.seed: 32
+        process.test_size: 0.25
+    outs:
+    - path: outs/process_test_x.csv
+      hash: md5
+      md5: d98c22f258453f077a540ba2636da3a8
+      size: 268412
+    - path: outs/process_test_y.csv
+      hash: md5
+      md5: 916e3924155197de9734d5a4fbc814c1
+      size: 7499
+    - path: outs/process_train_x.csv
+      hash: md5
+      md5: 9c354775cbd8221d2c721641860f31fa
+      size: 804919
+    - path: outs/process_train_y.csv
+      hash: md5
+      md5: 31de31630f09323a8158010907914e1c
+      size: 22481
+  train:
+    cmd: python data_train.py
+    deps:
+    - path: data_train.py
+      hash: md5
+      md5: 39c52632e6595c99ce027523c2dc33e4
+      size: 4701
+    - path: outs/process_test_x.csv
+      hash: md5
+      md5: d98c22f258453f077a540ba2636da3a8
+      size: 268412
+    - path: outs/process_test_y.csv
+      hash: md5
+      md5: 916e3924155197de9734d5a4fbc814c1
+      size: 7499
+    - path: outs/process_train_x.csv
+      hash: md5
+      md5: 9c354775cbd8221d2c721641860f31fa
+      size: 804919
+    - path: outs/process_train_y.csv
+      hash: md5
+      md5: 31de31630f09323a8158010907914e1c
+      size: 22481
+    params:
+      params.yaml:
+        train.max_depth: 19
+        train.n_estimators: 450
+    outs:
+    - path: Confusion_Matrix.png
+      hash: md5
+      md5: e060e2b7230939f3584d2175a7cb8f45
+      size: 14886
+    - path: ROC_Curve.png
+      hash: md5
+      md5: 31020784add719472fbd6220c265f9ca
+      size: 21258
+    - path: metrics.json
+      hash: md5
+      md5: 500faf814495d6c3aa802ff656628e37
+      size: 295
+    - path: roc_curve_with-SMOT.csv
+      hash: md5
+      md5: 6ee418e41c5668520f716c9ff68e5383
+      size: 67
+    - path: roc_curve_with-class-weight.csv
+      hash: md5
+      md5: ad8b8422821b945597931d1d35f4e5f7
+      size: 69
+    - path: roc_curve_without-imbalance.csv
+      hash: md5
+      md5: 50ef00b7f09764bf5bde0b8f2a535a3b
+      size: 69

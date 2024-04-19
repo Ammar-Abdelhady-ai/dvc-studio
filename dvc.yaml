@@ -1,0 +1,46 @@
+stages:
+  preparetion:
+    cmd: python data_prep.py
+    deps:
+      - data_prep.py
+      - dataset.csv
+    params:
+      - prepare.age_threshold
+    outs:
+      - outs/prepared_df.csv
+
+  process:
+    cmd: python data_process.py
+    deps:
+      - data_process.py
+      - outs/prepared_df.csv
+    params:
+      - process.test_size
+      - process.seed 
+    outs:
+      - outs/process_test_x.csv
+      - outs/process_test_y.csv
+      - outs/process_train_x.csv
+      - outs/process_train_y.csv
+
+  train:
+    cmd: python data_train.py
+    deps:
+      - data_train.py
+      - outs/process_test_x.csv
+      - outs/process_test_y.csv
+      - outs/process_train_x.csv
+      - outs/process_train_y.csv
+    params:
+      - train.n_estimators
+      - train.max_depth 
+    outs:
+      - Confusion_Matrix.png
+      - ROC_Curve.png
+      - roc_curve_with-class-weight.csv
+      - roc_curve_with-SMOT.csv
+      - roc_curve_without-imbalance.csv
+
+    metrics:
+      - metrics.json:
+         cache: false
