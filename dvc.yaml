@@ -45,8 +45,8 @@ stages:
       - metrics.json:
          cache: false
 plots:
-  - Confusion_Matrix.png
-  - ROC_Curve.png
+  - ./Confusion_Matrix.png
+  - ./ROC_Curve.png
   - LOC:
       template: simple
       x: fpr
