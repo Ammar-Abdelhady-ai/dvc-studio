@@ -44,3 +44,11 @@ stages:
     metrics:
       - metrics.json:
          cache: false
+plots:
+  - ./Confusion_Matrix.png
+  - ./ROC_Curve.png
+  - LOC:
+      template: simple
+      x: fpr
+      y:
+        roc_curve_with-class-weight.csv: "tpr\r"
