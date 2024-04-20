@@ -52,3 +52,9 @@ plots:
       x: fpr
       y:
         roc_curve_with-class-weight.csv: "tpr"
+  - fpr vs tpr:
+      template: simple
+      x: fpr
+      y:
+        roc_curve_with-SMOT.csv: "tpr"
+
