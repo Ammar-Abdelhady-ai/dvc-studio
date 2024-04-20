@@ -76,24 +76,24 @@ stages:
       size: 23978
     params:
       params.yaml:
-        train.max_depth: 29
-        train.n_estimators: 330
+        train.max_depth: 80
+        train.n_estimators: 500
     outs:
     - path: Confusion_Matrix.png
       hash: md5
-      md5: 45a8d65735ed2bb393a9948ff8165854
-      size: 14707
+      md5: 28c551a04d4b51afa65b3f8c51faff41
+      size: 14827
     - path: ROC_Curve.png
       hash: md5
-      md5: 50b861e0b96b8242184f4e8dd168d97a
-      size: 21321
+      md5: 515af2f862ae899bd4556f4eb013b7cd
+      size: 21365
     - path: metrics.json
       hash: md5
-      md5: 6162769d2215e52c1d168c1c4ce7c2b5
+      md5: 66997cd9b6a08becf1c533b2a84aba9d
       size: 296
     - path: roc_curve_with-SMOT.csv
       hash: md5
-      md5: 94dd833834a10d4d6bdecc857fc095b0
+      md5: 73a7c08d7bcaf052239fc1ac2d73c9f7
       size: 67
     - path: roc_curve_with-class-weight.csv
       hash: md5
@@ -101,5 +101,5 @@ stages:
       size: 69
     - path: roc_curve_without-imbalance.csv
       hash: md5
-      md5: 4c54a44d6b92478d0e0433e0bb4ed7f5
-      size: 69
+      md5: c91582a979afbda2cc2d3039e466c8a3
+      size: 68
