@@ -7,5 +7,5 @@ process:
 
 
 train:
-  n_estimators: 500
-  max_depth: 80
+  n_estimators: 370
+  max_depth: 33
